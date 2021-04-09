@@ -96,7 +96,7 @@ class InstagramScraper(object):
                             media_types=['image', 'video', 'story-image', 'story-video', 'broadcast'],
                             tag=False, location=False, search_location=False, comments=False,
                             verbose=0, include_location=False, filter=None, proxies={}, no_check_certificate=False,
-                                                        template='{urlname}', log_destination='')
+                                                        template='{urlname}', log_destination='', no_profile=False)
 
         allowed_attr = list(default_attr.keys())
         default_attr.update(kwargs)
@@ -648,8 +648,9 @@ class InstagramScraper(object):
 
                 self.rhx_gis = ""
 
-                self.get_profile_pic(dst, executor, future_to_item, user, username)
-                self.get_profile_info(dst, username)
+                if not self.no_profile:
+                    self.get_profile_pic(dst, executor, future_to_item, user, username)
+                    self.get_profile_info(dst, username)
 
                 if self.logged_in:
                     self.get_stories(dst, executor, future_to_item, user, username)
@@ -1555,6 +1556,7 @@ def main():
     parser.add_argument('--verbose', '-v', type=int, default=0, help='Logging verbosity level')
     parser.add_argument('--template', '-T', type=str, default='{urlname}', help='Customize filename template')
     parser.add_argument('--log_destination', '-l', type=str, default='', help='destination folder for the instagram-scraper.log file')
+    parser.add_argument('--no_profile', action='store_true', default=False, help='Ignore profile and related data')
 
     args = parser.parse_args()
 

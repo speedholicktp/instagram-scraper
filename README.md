@@ -1,3 +1,7 @@
+Modified by ktp based on:
+https://github.com/arc298/instagram-scraper
+-------
+
 <img src="https://camo.githubusercontent.com/9ac4a1f7f5ea0f573451b5ddc06e29c8aa113a85/68747470733a2f2f692e696d6775722e636f6d2f6948326a6468562e706e67" align="right">
 
 Instagram Scraper
@@ -10,16 +14,7 @@ instagram-scraper is a command-line application written in Python that scrapes a
 
 Install
 -------
-To install instagram-scraper:
-```bash
-$ pip install instagram-scraper
-```
-
-To update instagram-scraper:
-```bash
-$ pip install instagram-scraper --upgrade
-```
-Alternatively, you can clone the project and run the following command to install:
+You can clone the project and run the following command to install:
 Make sure you cd into the *instagram-scraper-master* folder before performing the command below.
 ```
 $ python setup.py install
@@ -192,6 +187,7 @@ OPTIONS
 
                         If the template is invalid, it will revert to the default.
                         Does not work with --tag and --location.
+--no_profile            Ingore user profile and related data.
 ```
 
 Develop
